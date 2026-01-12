@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title>时代的速度 - 穿越时代的列车</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/s1.css">
+	</head>
+	<body>
+		<div id="box">
+			<!-- 开篇 -->
+			<div class="screen ch-0" id="s0">
+				<!-- 历史轨道 -->
+				<div class="track-container">
+					<div class="track"></div>
+					<div class="track-details"></div>
+				</div>
+				<!-- 列车 -->
+				<div class="train left"></div>
+				<div class="train right"></div>
+				<!-- 文案 -->
+				<div class="text-box">欢迎登上这趟穿越时代的列车</div>
+				<div class="side-text left" id="leftText">
+					<h3>绿皮车时代</h3>
+					<p>缓慢、拥挤，却承载着一个农业国向工业国转型的沉重梦想。</p>
+				</div>
+				<div class="side-text right" id="rightText">
+					<h3>高铁时代</h3>
+					<p>迅捷、舒适，展现着一个制造大国向创新强国进发的磅礴力量。</p>
+				</div>
+				<div class="center-text" id="centerText">
+					<p>从时速40公里到350公里，改变的不仅是速度，更是整个中国经济的发展范式。</p>
+				</div>
+				<div class="ticket-text" id="ticketText">
+					<p>请握紧这张穿越时空的车票，让我们一同见证这场人类经济史上最壮观的轨道革命。</p>
+					<div class="ticket-icon"></div>
+				</div>
+				<!-- 交互按钮 -->
+				<button class="start-btn" id="startBtn">开始旅程</button>
+				<!-- 进度指示器 -->
+				<div class="progress-indicator">
+					<div class="progress-bar">
+						<div class="progress-fill"></div>
+					</div>
+					<div class="tip">点击任意处继续 <span id="count">0</span>/3</div>
+				</div>
+			</div>
+
+			<!-- 第一篇章-->
+			<!-- 第1屏：第一篇章 -->
+			<div class="screen ch-1" id="s1">
+				<!-- 横向长图背景 -->
+				<div class="chapter-bg" id="bg1"></div>
+
+				<!-- 固定绿皮火车 -->
+				<div class="fixed-train train-left"></div>
+
+				<!-- 章节标题 -->
+				<div class="chapter-header">
+					<div class="chapter-number">第一篇章</div>
+					<h1 class="chapter-title">绿皮记忆·经济起步的负重前行</h1>
+				</div>
+
+				<!-- 连续内容区域 -->
+				<div class="chapter-content">
+					<!-- 第1页 -->
+					<div class="content-section" data-page="1">
+						<div class="content-box">
+							<h2>第一站：缓慢的时代（1978年前）</h2>
+							<p>这里是1978年，中国铁路平均时速仅40+公里。</p>
+							<p>中国经济刚从计划经济转向市场经济，1978年GDP仅3679亿元，工业基础薄弱，交通运力成为经济发展的突出瓶颈。</p>
+							<div class="content-image">
+								<div class="image-placeholder">
+									<i class="fas fa-train"></i>
+									<p>20世纪70-80年代的城乡景象</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 第2页 -->
+					<div class="content-section" data-page="2">
+						<div class="content-box">
+							<div class="highlight-card">
+								<div class="card-header">
+									<i class="fas fa-video"></i>
+									<h3>邓小平访问日本</h3>
+								</div>
+								<div class="card-body">
+									<p>1978年10月26日，时任中国国务院副总理的邓小平在访问日本期间乘坐了日本的"光号"新干线。</p>
+									<div class="media-link">
+										<a href="https://tv.cctv.com/2025/12/12/VIDEbic2NqwkMtGagI6KDjX1251212.shtml"
+											class="video-btn" target="_blank">
+											<i class="fas fa-play-circle"></i> 观看邓小平乘坐新干线视频
+										</a>
+										<span class="link-source">央视网</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="fact-card">
+								<div class="fact-icon">
+									<i class="fas fa-bolt"></i>
+								</div>
+								<div class="fact-content">
+									<h4>铁路技术现状</h4>
+									<p>彼时，全球仅有的两条高速铁路均位于日本；我国铁路机力结构薄弱，电力机型仅221台，传统牵引占绝对主导。</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 第3页 -->
+					<div class="content-section" data-page="3">
+						<div class="content-box">
+							<h3>运输效率亟待提升</h3>
+							<p>旅客列车最高时速90–100公里，但受线路条件与装备水平制约，平均运行速度仅40公里左右，运输效率亟待提升。</p>
+
+							<div class="stats-container">
+								<div class="stat-row">
+									<div class="stat-item">
+										<div class="stat-value">24.89亿吨</div>
+										<div class="stat-label">1978年全国货运量</div>
+										<div class="stat-note">仅相当于2024年运量的4.4%</div>
+									</div>
+									<div class="stat-item">
+										<div class="stat-value">11.0119亿吨</div>
+										<div class="stat-label">铁路货运量</div>
+										<div class="stat-note">一条铁道拖着四成多的国民经济走</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="reference-card">
+								<div class="ref-header">
+									<i class="fas fa-newspaper"></i>
+									<span>相关资料</span>
+								</div>
+								<div class="ref-content">
+									<p>铁路货运能力紧张，煤炭、钢铁等工业原料运输时常"堵在路上"，甚至出现"以运定产"的情况——企业产量受制于运输量。</p>
+									<div class="ref-links">
+										<a href="https://finance.sina.cn/2018-12-28/detail-ihqhqcis0994172.d.html"
+											class="ref-link" target="_blank">
+											<i class="fas fa-external-link-alt"></i> 财经报道：铁路瓶颈制约特征明显
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 第4页 -->
+					<div class="content-section" data-page="4">
+						<div class="content-box">
+							<h3>绿皮车的双重角色</h3>
+
+							<div class="dual-card-container">
+								<div class="dual-card">
+									<div class="card-title">
+										<div class="title-icon">
+											<i class="fas fa-ticket-alt"></i>
+										</div>
+										<h4>拥挤与瓶颈</h4>
+									</div>
+									<div class="card-text">
+										<p>绿皮火车是当时长途出行的绝对主力，北京到广州需耗时近40小时，车厢内拥挤不堪，"一票难求"是常态。</p>
+										<p>铁路货运能力更显紧张，煤炭、钢铁等工业原料运输时常"堵在路上"。</p>
+									</div>
+									<div class="card-footer">
+										<a href="http://news.china.com.cn/txt/2018-12/14/content_74274797.htm"
+											class="card-link" target="_blank">
+											<i class="fas fa-book"></i> 阅读相关报道
+										</a>
+									</div>
+								</div>
+
+								<div class="dual-card">
+									<div class="card-title">
+										<div class="title-icon">
+											<i class="fas fa-seedling"></i>
+										</div>
+										<h4>承载希望</h4>
+									</div>
+									<div class="card-text">
+										<p>但它同时也承载着希望：三线建设者通过它深入内地，知青通过它往返城乡，原材料通过它从矿区运往工厂。</p>
+										<p>这是一条沉重但坚定的轨道，一个待兴的经济体，正在积蓄力量。</p>
+									</div>
+									<div class="card-footer">
+										<a href="https://news.sohu.com/20061016/n245807315.shtml" class="card-link"
+											target="_blank">
+											<i class="fas fa-book"></i> 了解历史背景
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="media-link">
+								<button class="video-btn" id="playVideo1">
+									<i class="fas fa-play"></i> 播放《时代呼唤》片段1
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- 第5页 -->
+					<div class="content-section" data-page="5">
+						<div class="content-box">
+							<div class="quiz-section">
+								<div class="quiz-header">
+									<i class="fas fa-question-circle"></i>
+									<h3>知识问答</h3>
+								</div>
+
+								<div class="quiz-question">
+									<p>1978年中国铁路平均时速约为？</p>
+								</div>
+
+								<div class="quiz-options">
+									<button class="quiz-option" data-answer="A">
+										<span class="option-letter">A</span>
+										<span class="option-text">40公里</span>
+									</button>
+									<button class="quiz-option" data-answer="B">
+										<span class="option-letter">B</span>
+										<span class="option-text">80公里</span>
+									</button>
+									<button class="quiz-option" data-answer="C">
+										<span class="option-letter">C</span>
+										<span class="option-text">120公里</span>
+									</button>
+									<button class="quiz-option" data-answer="D">
+										<span class="option-letter">D</span>
+										<span class="option-text">160公里</span>
+									</button>
+								</div>
+
+								<div class="quiz-feedback" id="quizFeedback">
+									<div class="feedback-header">
+										<i class="fas fa-lightbulb"></i>
+										<h4>知识解析</h4>
+									</div>
+									<div class="feedback-content">
+										<p><strong>正确答案：A. 40公里</strong></p>
+										<p>当时中国铁路技术基础薄弱，平均运行速度较低，成为经济发展的瓶颈。邓小平同志乘坐日本新干线时深刻感受到这种差距，这成为我国铁路提速的重要契机。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 第6页 -->
+					<div class="content-section" data-page="6">
+						<div class="content-box">
+							<div class="conclusion-section">
+								<div class="conclusion-header">
+									<i class="fas fa-quote-left"></i>
+									<h3>篇章结语</h3>
+									<i class="fas fa-quote-right"></i>
+								</div>
+								<div class="conclusion-content">
+									<p>这是一条用蒸汽与钢铁铺就的慢速轨道，却在拥挤与匮乏中承载着国家转向市场的第一声汽笛，把落后的现实与对速度的渴望同时写进时代的车厢。</p>
+									<p>绿皮火车虽然缓慢，但它见证了中国经济从起步到腾飞的关键时期，承载着一个民族的希望与梦想。</p>
+								</div>
+							</div>
+
+							<div class="next-chapter-prompt">
+								<div class="prompt-animation">
+									<div class="arrow-container">
+										<i class="fas fa-arrow-left"></i>
+										<div class="arrow-line"></div>
+										<i class="fas fa-arrow-right"></i>
+									</div>
+								</div>
+								<div class="prompt-content">
+									<h3>第一篇章 · 结束</h3>
+									<p class="prompt-main">向左滑动进入第二篇章</p>
+									<p class="prompt-sub">继续见证中国铁路的速度奇迹</p>
+								</div>
+								<div class="prompt-actions">
+									<button class="next-chapter-btn" id="nextChapterBtn">
+										前往第二篇章 <i class="fas fa-arrow-right"></i>
+									</button>
+									<button class="restart-chapter-btn" id="restartChapterBtn">
+										<i class="fas fa-redo"></i> 重新浏览
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 章节指示器 -->
+				<div class="chapter-indicator">
+					<div class="indicator-dots" id="indicatorDots">
+						<span class="dot active" data-page="0"></span>
+						<span class="dot" data-page="1"></span>
+						<span class="dot" data-page="2"></span>
+						<span class="dot" data-page="3"></span>
+						<span class="dot" data-page="4"></span>
+						<span class="dot" data-page="5"></span>
+					</div>
+					<div class="indicator-text">
+						<i class="fas fa-arrow-left"></i>
+						<span id="pageIndicator">1/6: 缓慢的时代</span>
+						<i class="fas fa-arrow-right"></i>
+					</div>
+				</div>
+
+				<!-- 章节导航 -->
+				<div class="chapter-navigation">
+					<button class="nav-btn prev-btn" id="prevBtn">
+						<i class="fas fa-chevron-left"></i>
+					</button>
+					<button class="nav-btn next-btn" id="nextBtn">
+						<i class="fas fa-chevron-right"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/main.js"></script>
+		<script src="js/s1.js"></script>
+	</body>
+</html>

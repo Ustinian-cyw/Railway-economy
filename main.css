@@ -1,0 +1,715 @@
+@font-face {
+  font-family: 'zhengwen';
+  src: url('../fonts/zhengwen.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'PingFang';
+  src: local('PingFang SC'), local('Microsoft YaHei');
+}
+
+/* ---- 基础设置 ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'PingFang', sans-serif;
+  touch-action: pan-y;
+  /* background: linear-gradient(135deg, #fff3c8 0%, #ffe8a1 50%, #ffd966 100%); */
+}
+
+/* 强制横屏适配 */
+@media screen and (orientation:portrait) {
+  body {
+    transform: rotate(90deg);
+    transform-origin: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vh;
+    height: 100vw;
+    margin-left: -50vh;
+    margin-top: -50vw;
+  }
+}
+
+/* ---- 横向滑屏容器 ---- */
+#box {
+  width: 800%;
+  height: 100%;
+  display: flex;
+  transition: transform .8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.screen {
+  width: 12.5%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- 开篇画面 ---- */
+#s0 {
+  background-image: url(../img/s0/bg1.PNG);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 历史轨道设计 */
+.track-container {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  height: 8px;
+  z-index: 1;
+}
+
+.track {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  right: 0%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    #8B4513 0%,
+    #A0522D 20%,
+    #8B4513 40%,
+    #A0522D 60%,
+    #8B4513 80%,
+    #A0522D 100%);
+  border-radius: 4px;
+  box-shadow: 
+    0 2px 10px rgba(139, 69, 19, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.5) inset;
+}
+
+.track-details {
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 15px,
+    #D2691E 15px,
+    #D2691E 30px
+  );
+  transform: translateY(-50%);
+}
+
+/* 列车样式优化 */
+.train {
+  position: absolute;
+  bottom: 10%;
+  width: 90vw;
+  height: 15vw;
+  min-width: 900px;
+  min-height: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
+  filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.3));
+  transform-origin: bottom center;
+}
+.train.left {
+  left: -50vw;
+  background-image: url(../img/s0/green-train.png);
+  animation: moveLeft 6s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+.train.right {
+  right: -50vw;
+  background-image: url(../img/s0/speed-train.PNG);
+  animation: moveRight 6s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+@keyframes moveLeft {
+  to { 
+    left: 7vw;
+    transform: translateY(-5px);
+  }
+}
+@keyframes moveRight {
+  to { 
+    right: 7vw;
+    transform: translateY(-5px);
+  }
+}
+
+/* 主文案 */
+.text-box {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  color: #8B4513;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 0.3rem;
+  font-family: 'zhengwen', serif;
+  line-height: 1.4;
+  opacity: 0;
+  text-shadow: 
+    2px 2px 4px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 217, 102, 0.5);
+  animation: fadeInUp 1s ease-out 0.5s forwards;
+  z-index: 10;
+  padding: 20px 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 0px;
+  border-top: 3px solid rgba(210, 105, 30, 0.4);
+  border-bottom: 3px solid rgba(210, 105, 30, 0.4);
+  border-left: none;
+  border-right: none;
+}
+
+/* 侧边文案 */
+.side-text {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 25%;
+  min-width: 300px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 2px solid #D2691E;
+  box-shadow: 
+    0 10px 30px rgba(139, 69, 19, 0.2),
+    0 0 40px rgba(255, 255, 255, 0.5) inset;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(-50%) scale(0.9);
+  z-index: 4;
+}
+.side-text.show {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+.side-text.left {
+  left: 8.5%;
+}
+.side-text.right {
+  right: 8.5%;
+}
+.side-text h3 {
+  color: #8B4513;
+  font-family: 'zhengwen', serif;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  text-align: center;
+  border-bottom: 2px solid #D2691E;
+  padding-bottom: 10px;
+}
+.side-text p {
+  color: #795548;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+/* 其他文案 */
+.center-text, .ticket-text {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%; 
+  padding: 20px 30px; 
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari支持 */
+  border-radius: 12px;
+  border-top: 4px solid #D2691E;
+  border-bottom: 4px solid #D2691E;
+  box-shadow: 
+    0 8px 25px rgba(139, 69, 19, 0.1),
+    0 0 20px rgba(255, 255, 255, 0.5) inset; /* 添加内发光增强可读性 */
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s ease-out;
+  z-index: 5;
+}
+
+.center-text p, .ticket-text p {
+  color: #5D4037;
+  font-size: 1rem; 
+  font-family: 'zhengwen', sans-serif; /* 使用更简洁的字体 */
+  line-height: 1.25; /* 适当增加行高 */
+  margin-bottom: 0;
+  font-weight: 300;
+}
+/* 车票文案特殊样式 */
+.ticket-text {
+  background: linear-gradient(to right, 
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 248, 225, 0.3) 100%);
+  border-top: 4px solid #8B4513;
+  border-bottom: 4px solid #8B4513;
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+/* 车票角标装饰 - 模拟车票的穿孔效果 */
+.ticket-text::before,
+.ticket-text::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: 2px solid #D2691E;
+  border-radius: 50%;
+}
+.ticket-text::before {
+  top: -10px;
+  left: -10px;
+}
+.ticket-text::after {
+  top: -10px;
+  right: -10px;
+}
+
+/* 进度指示器 */
+.progress-indicator {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 500px;
+  z-index: 10;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(139, 69, 19, 0.2);
+  border-radius: 3px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #8B4513, #D2691E);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.tip {
+  text-align: center;
+  color: #795548;
+  font-size: 1rem;
+  font-family: 'PingFang', sans-serif;
+  opacity: 0.9;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* 开始按钮 */
+.start-btn {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 48px;
+  font-size: 1.4rem;
+  font-family: 'zhengwen', serif;
+  color: #fff;
+  background: linear-gradient(135deg, #8B4513, #D2691E);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 8px 20px rgba(139, 69, 19, 0.4),
+    0 0 20px rgba(255, 217, 102, 0.3) inset;
+  z-index: 10;
+}
+
+.start-btn:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 
+    0 12px 25px rgba(139, 69, 19, 0.5),
+    0 0 30px rgba(255, 217, 102, 0.4) inset;
+}
+
+.start-btn:active {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 滑动提示 */
+.swipe-hint {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #8B4513;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 4s forwards;
+  z-index: 10;
+}
+
+.swipe-arrow {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: swipeHint 1.5s infinite ease-in-out;
+}
+
+.swipe-hint span {
+  font-family: 'PingFang', sans-serif;
+  font-size: 0.9rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* 响应式调整 */
+@media screen and (min-width: 1400px) {
+  .text-box{
+	  font-size: 3.5rem;
+  }
+  .center-text, .ticket-text {
+    width: 60%; 
+    max-width: 800px; 
+    padding: 20px 30px;
+  }
+  .center-text p, .ticket-text p {
+    font-size: 1.2rem; 
+  }
+  .track-container{
+  	bottom: 15%;
+  }
+  .train{
+  	bottom: 10%;
+  }
+}
+@media screen and (max-width: 1400px) and (min-width: 1200px)  {
+  .text-box { font-size: 2.5rem; }
+  .side-text { width: 28%; min-width: 280px; }
+  .center-text, .ticket-text {
+      width: 65%;
+      padding: 20px 30px;
+  	top: 50%;
+    }
+    .center-text p, .ticket-text p {
+      font-size: 1.2rem;
+    }
+	.track-container{
+		bottom: 15%;
+	}
+	.train{
+		bottom: 8%;
+	}
+}
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+  .center-text, .ticket-text {
+    width: 60%;
+    padding: 22px 35px;
+    top: 50%; 
+  }
+  .center-text p, .ticket-text p {
+    font-size: 1.1rem;
+  }
+  .ticket-text::before,
+  .ticket-text::after {
+    width: 18px;
+    height: 18px;
+  }
+  .track-container{
+  	bottom: 15%;
+  }
+  .train{
+	  bottom: 4%;
+  }
+  
+}
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .text-box { font-size: 2rem; padding: 10px 0; top: 10%;}
+  .side-text { width: 35%; min-width: 250px; padding: 20px; }
+  .center-text, .ticket-text {
+    width: 75%;
+    padding: 20px 30px;
+    top: 40%;
+    border-top: 3px solid #D2691E;
+    border-bottom: 3px solid #D2691E;
+  }
+  .center-text p, .ticket-text p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+  .ticket-text {
+    border-top: 3px solid #8B4513;
+    border-bottom: 3px solid #8B4513;
+  }
+  .ticket-text::before,
+  .ticket-text::after {
+    width: 16px;
+    height: 16px;
+    border-width: 1.5px;
+  }
+  .ticket-text::before {
+    top: -8px;
+    left: -8px;
+  }
+  .ticket-text::after {
+    top: -8px;
+    right: -8px;
+  }
+  .track-container{
+  	bottom: 15%;
+  }
+  .train{
+	  width: 90vw;
+	  min-width: 100px;
+  	  bottom: -3%;
+  }
+  @keyframes moveLeft {
+      to { 
+        left: 3vw ; 
+      }
+    }
+    @keyframes moveRight {
+      to { 
+        right: 3vw ; 
+      }
+    }
+}
+@media screen and (max-width: 768px) {
+  .text-box { font-size: 2rem; padding: 10px 0; }
+  .side-text { width: 35%; min-width: 250px; padding: 20px; }
+  .train{
+	  width: 60vw;
+	  height: 15vh;
+	  min-width: 400px;
+	  min-height: 150px;
+	  bottom: 2%;
+  }
+  @keyframes moveLeft {
+      to { 
+        left: 3vw ; /* 更靠近左侧 */
+      }
+    }
+    @keyframes moveRight {
+      to { 
+        right: 3vw ; /* 更靠近右侧 */
+      }
+    }
+  }
+@media screen and (orientation:portrait) and ((max-width: 1200px) and (min-width: 992px)) {
+  /* 在强制横屏模式下 */
+  .center-text, .ticket-text {
+    width: 70%; 
+    padding: 20px 30px;
+	top: 50%;
+  }
+  
+  .center-text p, .ticket-text p {
+    font-size: 1.1rem;
+  }
+  .train{
+	  bottom: 8%;
+  }
+}
+@media screen and (orientation:portrait) and ((max-width: 992px) and (min-width: 768px)) {
+  /* 在强制横屏模式下 */
+  .center-text, .ticket-text {
+    width: 70%; 
+    padding: 20px 30px;
+	top: 50%;
+  }
+  
+  .center-text p, .ticket-text p {
+    font-size: 1.1rem;
+  }
+  .train{
+	  bottom: 8%;
+  }
+  @keyframes moveLeft {
+      to { 
+        left: 5vw ; 
+      }
+    }
+    @keyframes moveRight {
+      to { 
+        right: 5vw ; 
+      }
+    }
+}
+@media screen and (orientation:portrait) and ((max-width: 768px) and (min-width: 576px)) {
+  /* 在强制横屏模式下 */
+  .center-text, .ticket-text {
+    width: 70%; 
+    padding: 20px 30px;
+	top: 50%;
+  }
+  .center-text p, .ticket-text p {
+    font-size: 1rem;
+  }
+  .train{
+	  width: 90vw;
+	  min-width: 350px;
+	  bottom: 10%;
+  }
+  @keyframes moveLeft {
+      to { 
+        left: 5% ; 
+      }
+    }
+    @keyframes moveRight {
+      to { 
+        right: 5% ; 
+      }
+    }
+	.start-btn{
+		font-size: 1.1rem;
+		padding: 12px 36px;
+		border-radius: 40px;
+	}
+}
+@media screen and (orientation:portrait) and ((max-width: 576px) and (min-width: 400px)) {
+  /* 在强制横屏模式下 */
+  .text-box{
+	  top: 10%;
+  }
+  .side-text{
+	  width: 38%;
+	  top: 48%;
+  }
+  .side-text h3{
+  	  font-size: 1.1rem;
+  }
+  .center-text, .ticket-text {
+    width: 75%; 
+    padding: 20px 30px;
+	top: 45%;
+  }
+  .center-text p, .ticket-text p {
+    font-size: 1rem;
+  }
+  .track-container{
+	  bottom: 18%;
+  }
+  .train{
+	  width: 90vw;
+	  height: 20vh;
+	  min-width: 500px;
+	  min-height: 180px;
+	  bottom: 8%;
+  }
+  @keyframes moveLeft {
+      to { 
+        left: 8% ; 
+      }
+    }
+    @keyframes moveRight {
+      to { 
+        right: 8% ; 
+      }
+    }
+	.start-btn{
+		font-size: 1.1rem;
+		padding: 12px 36px;
+		border-radius: 40px;
+	}
+}
+@media screen and (orientation:portrait) and (max-width: 400px)  {
+  /* 在强制横屏模式下 */
+  .text-box{
+	  top: 10%;
+	  font-size: 1.5rem;
+  }
+  .side-text{
+	  width: 38%;
+	  top: 48%;
+	  padding: 15px;
+  }
+  .side-text h3{
+  	  font-size: 1.1rem;
+  }
+  .side-text p{
+  	  font-size: 0.8rem;
+  }
+  .center-text, .ticket-text {
+    width: 75%; 
+    padding: 15px 25px;
+	top: 40%;
+  }
+  .center-text p, .ticket-text p {
+    font-size: 1rem;
+  }
+  .track-container{
+	  bottom: 20%;
+  }
+  .train{
+	  width: 90vw;
+	  height: 20vh;
+	  min-width: 500px;
+	  min-height: 180px;
+	  bottom: 8%;
+  }
+  @keyframes moveLeft {
+      to { 
+        left: 8% ; 
+      }
+    }
+    @keyframes moveRight {
+      to { 
+        right: 8% ; 
+      }
+    }
+	.start-btn{
+		font-size: 1.1rem;
+		padding: 12px 36px;
+		border-radius: 40px;
+	}
+}
+/* 高对比度模式适配 */
+@media (prefers-contrast: high) {
+  .center-text, .ticket-text {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: #8B4513;
+  }
+  .center-text p, .ticket-text p {
+    color: #3E2723; /* 更深色的文字 */
+  }
+}
+/* 减少动画模式适配 */
+@media (prefers-reduced-motion: reduce) {
+  .center-text, .ticket-text {
+    transition: none;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+
+
+
+
